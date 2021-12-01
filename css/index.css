@@ -27,6 +27,29 @@ body{
   background: rgba(233, 231, 231, 0.918);
   margin: auto;
   width: 50%;
-  
-  
+  padding: 20px;
+}
+#textInput{
+  margin-right: 10px;
+}
+
+#submit{
+
+  margin-top: 10px;
+}
+
+.radioItem{
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
 }

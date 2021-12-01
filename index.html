@@ -11,19 +11,42 @@
 </head>
 
 <body>
-<div id="container">
-  <div id="center">
-    <form action="/action_page.php">
-      <label for="fname">First name:</label>
-      <input type="text" id="fname" name="fname"><br><br>
-      <label for="lname">Last name:</label>
-      <input type="text" id="lname" name="lname"><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-
-</div>
+  <div id="container">
+    <div id="center">
+      <form class="row">
+        <div class="column">
+          <h1>Mr. or MS.?</h1>
+          
+          <div class="row">
   
+            <label for="fname" id="textInput">Name</label>
+            <input type="text" id="fname" name="fname">
+            
+          </div>
+    
+          <input type="radio" id="maleRadio" name="genderChoice" class="radioItem" value="Male">
+        &nbsp; <label for="maleRadio">Male</label>
+          <br><input type="radio" id="femaleRadio" name="genderChoice" class="radioItem" value="female">
+        &nbsp; <label for="femaleRadio">Female</label>
+          <br>
+  
+          <input type="submit" value="Submit" id="submit">
+          
+         
+        </div>
+        <div class="column">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <label for="lname">Last name:</label>
+          <input type="text" id="lname" name="lname"><br><br>
+          <input type="submit" value="Submit">
+  
+        </div>
+        
+      </form>
+    </div>
+  
+  </div>
     
 </body>
 
