@@ -1,6 +1,8 @@
 // get user data from API and return the json value.
 const submitButton = document.querySelector(".submitButton");
 const nameField = document.querySelector(".nameField");
+const gender = document.querySelector(".gender");
+const probability = document.querySelector(".probability");
 
 async function getNameData(name) {
   console.log("request");
@@ -10,7 +12,8 @@ async function getNameData(name) {
     let response = await fetch(`https://api.genderize.io/?name=${name}`);
     let json = await response.json();
     if (response.status == 200) {
-      console.log(json);
+      // console.log(json);
+      // console.log(json.name);
       return json;
     }
     // handleError(json);
@@ -19,6 +22,11 @@ async function getNameData(name) {
     showErrorMessage(e);
     console.log(e);
   }
+}
+
+function setPrediction(nameData) {
+  gender.innerHTML = nameData.gender;
+  probability.innerHTML = nameData.probability;
 }
 
 async function sendRequest(e) {
@@ -33,12 +41,14 @@ async function sendRequest(e) {
   nameData = await JSON.parse(window.localStorage.getItem(name));
   if (nameData == null) {
     nameData = await getNameData(name);
+    console.log(nameData);
     if (nameData == null) return;
     // findPopLang(name);
     window.localStorage.setItem(name, JSON.stringify(nameData));
   }
   // findPopLang(name);
   // fillProfileCard(nameData);
+  setPrediction(nameData);
 }
 
 submitButton.addEventListener("click", sendRequest);
