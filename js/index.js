@@ -3,6 +3,7 @@ const submitButton = document.querySelector(".submitButton");
 const nameField = document.querySelector(".nameField");
 const gender = document.querySelector(".gender");
 const probability = document.querySelector(".probability");
+const saveButton = document.querySelector(".saveButton");
 
 async function getNameData(name) {
   console.log("request");
@@ -44,11 +45,26 @@ async function sendRequest(e) {
     console.log(nameData);
     if (nameData == null) return;
     // findPopLang(name);
-    window.localStorage.setItem(name, JSON.stringify(nameData));
+    // window.localStorage.setItem(name, JSON.stringify(nameData));
   }
   // findPopLang(name);
   // fillProfileCard(nameData);
   setPrediction(nameData);
 }
 
+function saveInformation(e) {
+  console.log("save button clicked!");
+  let name = nameField.value;
+  const genderRadio = document.querySelector(
+    'input[name="genderChoice"]:checked'
+  ).value;
+  if (name == "" || !genderRadio) {
+    console.log("empty field detected");
+    return;
+  }
+  e.preventDefault();
+  window.localStorage.setItem(name, genderRadio);
+}
+
 submitButton.addEventListener("click", sendRequest);
+saveButton.addEventListener("click", saveInformation);
