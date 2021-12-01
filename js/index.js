@@ -4,6 +4,9 @@ const nameField = document.querySelector(".nameField");
 const gender = document.querySelector(".gender");
 const probability = document.querySelector(".probability");
 const saveButton = document.querySelector(".saveButton");
+const saved_answer_topic = document.querySelector("#saved_answer_topic");
+const saved_gender = document.querySelector("#saved_gender");
+const clearButton = document.querySelector("#clearButton");
 
 async function getNameData(name) {
   console.log("request");
@@ -58,12 +61,20 @@ function saveInformation(e) {
   const genderRadio = document.querySelector(
     'input[name="genderChoice"]:checked'
   ).value;
-  if (name == "" || !genderRadio) {
-    console.log("empty field detected");
+  if (name == "") {
+    console.log("name empty");
     return;
   }
-  e.preventDefault();
-  window.localStorage.setItem(name, genderRadio);
+  if (genderRadio) {
+    e.preventDefault();
+    window.localStorage.setItem(name, genderRadio);
+  } else {
+    e.preventDefault();
+    window.localStorage.setItem(name, gender);
+  }
+
+  saved_answer_topic.innerHTML = "Saved <br>Answer";
+  clearButton.innerHTML = "Clear";
 }
 
 submitButton.addEventListener("click", sendRequest);

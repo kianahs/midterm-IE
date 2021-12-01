@@ -21,6 +21,10 @@ body{
   left: 0px;
 }
 
+#saved_answer_topic{
+  padding-top: 1px;
+}
+
 
 #center {
   border-radius: 25px;
@@ -38,6 +42,13 @@ body{
   margin-top: 10px;
 }
 
+.clearButton{
+  margin-bottom: 20 px;
+}
+
+.saved_answer_container{
+  border-style: dashed;
+}
 .radioItem{
   margin-bottom: 20px;
 }
