@@ -1,9 +1,9 @@
 // get user data from API and return the json value.
-const submitButton = document.querySelector(".submitButton");
+const submitButton = document.querySelector("#submitButton");
 const nameField = document.querySelector(".nameField");
-const gender = document.querySelector(".gender");
-const probability = document.querySelector(".probability");
-const saveButton = document.querySelector(".saveButton");
+const gender = document.querySelector("#gender");
+const probability = document.querySelector("#probability");
+const saveButton = document.querySelector("#saveButton");
 const saved_gender = document.querySelector("#saved_gender");
 const clearButton = document.querySelector("#clearButton");
 

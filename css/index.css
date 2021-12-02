@@ -39,18 +39,39 @@ body{
   margin-right: 10px;
 }
 
-#submit{
+#submitButton{
 
   margin-top: 10px;
+  margin-bottom: 5px;
+}
+#saved_answer_topic{
+  margin-top: 0px;
+ 
 }
 
-.clearButton{
-  margin-bottom: 20 px;
+.formButton{
+
+  border-radius: 5px;
+}
+
+h4, h5{
+  font-weight: normal;
+}
+
+#gender{
+  margin-bottom: 5px;
+}
+#probability{
+  margin-top: 5px;
+  margin-bottom: 35px;
 }
 
 #saved_answer_container{
+  border-radius: 5px;
   border-style: dashed;
+  border-color: gray;
   display:none;
+ 
 }
 .radioItem{
   margin-bottom: 20px;
@@ -58,12 +79,17 @@ body{
 
 .row {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  
 }
 
 /* Create two equal columns that sits next to each other */
 .column {
   flex: 1;
   padding: 10px;
- 
+  flex-direction: column;
+}
+
+#clearButton{
+  margin-bottom: 10px;
 }
