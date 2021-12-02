@@ -42,7 +42,7 @@ async function sendRequest(e) {
   }
   e.preventDefault();
   let nameData;
-  nameData = await JSON.parse(window.localStorage.getItem(name));
+
   if (nameData == null) {
     nameData = await getNameData(name);
     console.log(nameData);
@@ -53,6 +53,7 @@ async function sendRequest(e) {
   // findPopLang(name);
   // fillProfileCard(nameData);
   setPrediction(nameData);
+  showSavedAnswerContainer(name);
 }
 
 function saveInformation(e) {
@@ -82,9 +83,15 @@ function saveInformation(e) {
   }
   console.log("done!");
 
-  saved_answer_topic.innerHTML = "Saved <br>Answer";
-  clearButton.innerHTML = "Clear";
+  showSavedAnswerContainer(name);
 }
 
+function showSavedAnswerContainer(name) {
+  var storage = localStorage.getItem(name);
+  if (storage) {
+    saved_gender.innerHTML = localStorage.getItem(name);
+    document.getElementById("saved_answer_container").style.display = "block";
+  }
+}
 submitButton.addEventListener("click", sendRequest);
 saveButton.addEventListener("click", saveInformation);

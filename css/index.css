@@ -46,8 +46,9 @@ body{
   margin-bottom: 20 px;
 }
 
-.saved_answer_container{
+#saved_answer_container{
   border-style: dashed;
+  display:none;
 }
 .radioItem{
   margin-bottom: 20px;
