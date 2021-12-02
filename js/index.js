@@ -58,20 +58,29 @@ async function sendRequest(e) {
 function saveInformation(e) {
   console.log("save button clicked!");
   let name = nameField.value;
-  const genderRadio = document.querySelector(
-    'input[name="genderChoice"]:checked'
-  ).value;
+  let genderRadio = null;
+  e.preventDefault();
+  if (
+    document.getElementById("maleRadio").checked ||
+    document.getElementById("femaleRadio").checked
+  ) {
+    genderRadio = document.querySelector(
+      'input[name="genderChoice"]:checked'
+    ).value;
+  }
+
   if (name == "") {
     console.log("name empty");
     return;
   }
   if (genderRadio) {
-    e.preventDefault();
     window.localStorage.setItem(name, genderRadio);
   } else {
-    e.preventDefault();
-    window.localStorage.setItem(name, gender);
+    console.log("saving prediction");
+
+    window.localStorage.setItem(name, gender.innerHTML);
   }
+  console.log("done!");
 
   saved_answer_topic.innerHTML = "Saved <br>Answer";
   clearButton.innerHTML = "Clear";
