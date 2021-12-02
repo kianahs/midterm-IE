@@ -1,74 +1,81 @@
+/* seeting background image to cover the whole screen*/
 body{
   background: url("../images/background.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
-  top: 0px !important;
 }
 
-
-.center {
-  
-  border-radius: 60px;
-  padding: 0px 100px 70px 40px;
-  background: rgba(233, 231, 231, 0.918);
-  margin: 0;
+/*define center class for main rectangle to align in center of the background
+*/
+.center {  
   position: absolute;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
+/*define form button class for form's buttonsو So that the form buttons have the same shape*/
 .formButton{
-
   border-radius: 5px;
 }
 
+/*set font weight for gender and probability in prediction and gender in saved answer */
 h4, h5{
   font-weight: normal;
 }
 
+/*define radioItem class to set margin in botton of each radio button*/
 .radioItem{
   margin-bottom: 20px;
 }
 
+/*define flexbox (flex container)*/
 .row {
   display: flex;
   margin-bottom: 30px;
 }
 
-/* Create two equal columns that sits next to each other */
+/* define column class to create two equal columns that sits next to each other (flex column) */
 .column {
   flex: 1;
-  padding: 20px;
- 
+  padding: 20px; 
 }
 
+/* setting padding, margin, radius border, background and opacity color for parent container of form tag*/
+#mainContainer{
+  border-radius: 60px;
+  padding: 0px 100px 70px 40px;
+  background: rgba(233, 231, 231, 0.918);
+  margin: 0;
+}
+
+/*set margin at the right side of input's label */
 #textInput{
   margin-right: 10px;
 }
 
+/*set margin at the top and bottom of submit bottom*/
 #submitButton{
-
   margin-top: 10px;
   margin-bottom: 5px;
 }
+
+/*stick saved answer topic to the top of saved answer box */
 #saved_answer_topic{
   margin-top: 0px;
-  padding-top: 1px;
- 
 }
 
+/*set margin at the bottom of gender in prediction section*/
 #gender{
   margin-bottom: 5px;
 }
+
+/* set margin at the top and bottom of probability in prediction section */
 #probability{
   margin-top: 5px;
   margin-bottom: 35px;
 }
 
+/*set radius border, dashed border style, border color, padding right and display for saved answer box*/
 #saved_answer_container{
   border-radius: 5px;
   border-style: dashed;
@@ -77,6 +84,7 @@ h4, h5{
   padding-right: 150px;
 }
 
+/*set margin at the botoom of clear button*/
 #clearButton{
   margin-bottom: 10px;
 }

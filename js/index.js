@@ -7,7 +7,7 @@ const saved_gender = document.querySelector("#saved_gender");
 const clearButton = document.querySelector("#clearButton");
 
 async function getNameData(name) {
-  console.log("request");
+  console.log("sending request to API");
   console.log(name);
 
   try {
@@ -20,7 +20,6 @@ async function getNameData(name) {
       }
       return JSON.parse(JSON.stringify(json));
     }
-    showAlert("Network Error!");
     return Promise.reject(`Request failed with error ${response.status}`);
   } catch (e) {
     showAlert("An Error occured!");
@@ -29,16 +28,16 @@ async function getNameData(name) {
 }
 
 function showAlert(message) {
-  var el = document.createElement("div");
-  el.setAttribute(
+  var warning = document.createElement("div");
+  warning.setAttribute(
     "style",
     "position:absolute;top:10%;left:8%;padding: 20px;margin-right:20px;background-color: #f44336;color: white;"
   );
-  el.innerHTML = message;
+  warning.innerHTML = message;
   setTimeout(function () {
-    el.parentNode.removeChild(el);
+    warning.parentNode.removeChild(warning);
   }, 5000);
-  document.body.appendChild(el);
+  document.body.appendChild(warning);
 }
 
 function setPrediction(nameData) {
@@ -46,23 +45,22 @@ function setPrediction(nameData) {
   probability.innerHTML = nameData.probability;
 }
 
-async function sendRequest(e) {
+async function sendRequestToAPI(e) {
   hideSavedAnsweContainer();
-  console.log("clicked on submit");
+  console.log("submitted");
   let name = nameField.value;
 
   if (name == "") {
-    console.log("name was empty");
+    console.log("name field is empty");
     return;
   }
   e.preventDefault();
-  let nameData;
 
-  if (nameData == null) {
-    nameData = await getNameData(name);
-    console.log(nameData);
-    if (nameData == null) return;
-  }
+  let nameData;
+  nameData = await getNameData(name);
+  console.log(nameData);
+  if (nameData == null) return;
+
   setPrediction(nameData);
   showSavedAnswerContainer(name);
 }
@@ -82,18 +80,18 @@ function saveInformation(e) {
   }
 
   if (name == "") {
-    console.log("name empty");
+    console.log("name field is empty");
     return;
   }
+
   if (genderRadio) {
     window.localStorage.setItem(name, genderRadio);
   } else {
     console.log("saving prediction");
-
     window.localStorage.setItem(name, gender.innerHTML);
   }
-  console.log("done!");
 
+  console.log("done!");
   showSavedAnswerContainer(name);
 }
 
@@ -106,8 +104,6 @@ function showSavedAnswerContainer(name) {
 }
 
 function hideSavedAnsweContainer() {
-  // e.preventDefault();
-
   document.getElementById("saved_answer_container").style.display = "none";
 }
 
@@ -125,6 +121,6 @@ $input.addEventListener("beforeinput", (e) => {
   }
 });
 
-submitButton.addEventListener("click", sendRequest);
+submitButton.addEventListener("click", sendRequestToAPI);
 saveButton.addEventListener("click", saveInformation);
 clearButton.addEventListener("click", clearSavedAnswer);
