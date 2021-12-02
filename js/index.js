@@ -15,7 +15,7 @@ async function getNameData(name) {
     let response = await fetch(`https://api.genderize.io/?name=${name}`);
     let json = await response.json();
     if (response.status == 200) {
-      // console.log(json);
+      console.log(typeof json);
       // console.log(json.name);
       return json;
     }
@@ -98,6 +98,14 @@ function clearSavedAnswer(e) {
   document.getElementById("saved_answer_container").style.display = "none";
   localStorage.removeItem(nameField.value);
 }
+
+const $input = nameField;
+const ALLOWED_CHARS_REGEXP = /^[a-zA-Z ]*$/;
+$input.addEventListener("beforeinput", (e) => {
+  if (!ALLOWED_CHARS_REGEXP.test(e.data)) {
+    e.preventDefault();
+  }
+});
 
 submitButton.addEventListener("click", sendRequest);
 saveButton.addEventListener("click", saveInformation);
