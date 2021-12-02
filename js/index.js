@@ -4,7 +4,6 @@ const nameField = document.querySelector(".nameField");
 const gender = document.querySelector(".gender");
 const probability = document.querySelector(".probability");
 const saveButton = document.querySelector(".saveButton");
-const saved_answer_topic = document.querySelector("#saved_answer_topic");
 const saved_gender = document.querySelector("#saved_gender");
 const clearButton = document.querySelector("#clearButton");
 
@@ -93,5 +92,13 @@ function showSavedAnswerContainer(name) {
     document.getElementById("saved_answer_container").style.display = "block";
   }
 }
+
+function clearSavedAnswer(e) {
+  e.preventDefault();
+  document.getElementById("saved_answer_container").style.display = "none";
+  localStorage.removeItem(nameField.value);
+}
+
 submitButton.addEventListener("click", sendRequest);
 saveButton.addEventListener("click", saveInformation);
+clearButton.addEventListener("click", clearSavedAnswer);
