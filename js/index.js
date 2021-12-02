@@ -1,4 +1,3 @@
-// get user data from API and return the json value.
 const submitButton = document.querySelector("#submitButton");
 const nameField = document.querySelector(".nameField");
 const gender = document.querySelector("#gender");
@@ -6,8 +5,6 @@ const probability = document.querySelector("#probability");
 const saveButton = document.querySelector("#saveButton");
 const saved_gender = document.querySelector("#saved_gender");
 const clearButton = document.querySelector("#clearButton");
-let alert = document.querySelector("#alert");
-const errorMessage = document.querySelector(".errorMessage");
 
 async function getNameData(name) {
   console.log("request");
@@ -21,7 +18,7 @@ async function getNameData(name) {
         showAlert("Name Gender not found");
         return;
       }
-      return json;
+      return JSON.parse(JSON.stringify(json));
     }
     showAlert("Network Error!");
     return Promise.reject(`Request failed with error ${response.status}`);
@@ -40,7 +37,7 @@ function showAlert(message) {
   el.innerHTML = message;
   setTimeout(function () {
     el.parentNode.removeChild(el);
-  }, 10000);
+  }, 5000);
   document.body.appendChild(el);
 }
 
@@ -50,8 +47,10 @@ function setPrediction(nameData) {
 }
 
 async function sendRequest(e) {
+  hideSavedAnsweContainer();
   console.log("clicked on submit");
   let name = nameField.value;
+
   if (name == "") {
     console.log("name was empty");
     return;
@@ -104,6 +103,12 @@ function showSavedAnswerContainer(name) {
     saved_gender.innerHTML = localStorage.getItem(name);
     document.getElementById("saved_answer_container").style.display = "block";
   }
+}
+
+function hideSavedAnsweContainer() {
+  // e.preventDefault();
+
+  document.getElementById("saved_answer_container").style.display = "none";
 }
 
 function clearSavedAnswer(e) {
