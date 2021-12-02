@@ -11,7 +11,7 @@ body{
 .center {
   
   border-radius: 60px;
-  padding: 0px 70px 70px 40px;
+  padding: 0px 100px 70px 40px;
   background: rgba(233, 231, 231, 0.918);
   margin: 0;
   position: absolute;
@@ -46,11 +46,6 @@ h4, h5{
  
 }
 
-#saved_answer_topic{
-  padding-top: 1px;
-}
-
-
 #textInput{
   margin-right: 10px;
 }
@@ -62,6 +57,7 @@ h4, h5{
 }
 #saved_answer_topic{
   margin-top: 0px;
+  padding-top: 1px;
  
 }
 
@@ -78,7 +74,7 @@ h4, h5{
   border-style: dashed;
   border-color: gray;
   display:none;
- 
+  padding-right: 150px;
 }
 
 #clearButton{
