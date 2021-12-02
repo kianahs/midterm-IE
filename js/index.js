@@ -6,6 +6,8 @@ const probability = document.querySelector("#probability");
 const saveButton = document.querySelector("#saveButton");
 const saved_gender = document.querySelector("#saved_gender");
 const clearButton = document.querySelector("#clearButton");
+let alert = document.querySelector("#alert");
+const errorMessage = document.querySelector(".errorMessage");
 
 async function getNameData(name) {
   console.log("request");
@@ -15,16 +17,31 @@ async function getNameData(name) {
     let response = await fetch(`https://api.genderize.io/?name=${name}`);
     let json = await response.json();
     if (response.status == 200) {
-      console.log(typeof json);
-      // console.log(json.name);
+      if (json.gender == null) {
+        showAlert("Name Gender not found");
+        return;
+      }
       return json;
     }
-    // handleError(json);
+    showAlert("Network Error!");
     return Promise.reject(`Request failed with error ${response.status}`);
   } catch (e) {
-    showErrorMessage(e);
+    showAlert("An Error occured!");
     console.log(e);
   }
+}
+
+function showAlert(message) {
+  var el = document.createElement("div");
+  el.setAttribute(
+    "style",
+    "position:absolute;top:10%;left:8%;padding: 20px;margin-right:20px;background-color: #f44336;color: white;"
+  );
+  el.innerHTML = message;
+  setTimeout(function () {
+    el.parentNode.removeChild(el);
+  }, 10000);
+  document.body.appendChild(el);
 }
 
 function setPrediction(nameData) {
@@ -46,11 +63,7 @@ async function sendRequest(e) {
     nameData = await getNameData(name);
     console.log(nameData);
     if (nameData == null) return;
-    // findPopLang(name);
-    // window.localStorage.setItem(name, JSON.stringify(nameData));
   }
-  // findPopLang(name);
-  // fillProfileCard(nameData);
   setPrediction(nameData);
   showSavedAnswerContainer(name);
 }
