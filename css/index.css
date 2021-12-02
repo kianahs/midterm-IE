@@ -26,7 +26,7 @@ body{
 }
 
 
-#center {
+/* #center {
   border-radius: 25px;
   background: rgba(233, 231, 231, 0.918);
   margin: auto;
@@ -34,7 +34,7 @@ body{
   padding: 20px;
   flex-direction: column;
   max-height: 100vh;
-}
+} */
 #textInput{
   margin-right: 10px;
 }
@@ -80,16 +80,28 @@ h4, h5{
 .row {
   display: flex;
   margin-bottom: 30px;
-  
 }
 
 /* Create two equal columns that sits next to each other */
 .column {
   flex: 1;
-  padding: 10px;
-  flex-direction: column;
+  padding: 20px;
+ 
 }
+
 
 #clearButton{
   margin-bottom: 10px;
+}
+.center {
+  width: 50%;
+  border-radius: 25px;
+  padding: 20px;
+  background: rgba(233, 231, 231, 0.918);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
